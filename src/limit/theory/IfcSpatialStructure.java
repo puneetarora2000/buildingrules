@@ -1,4 +1,4 @@
-package ifc4javatoolbox.demo;
+package limit.theory;
 import ifc4javatoolbox.ifc4.IfcBuildingStorey;
 import ifc4javatoolbox.ifc4.IfcObjectDefinition;
 import ifc4javatoolbox.ifc4.IfcOpeningElement;

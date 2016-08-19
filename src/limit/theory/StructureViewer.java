@@ -1,4 +1,4 @@
-package demo;
+package limit.theory;
 import ifc4javatoolbox.ifc4.IfcLabel;
 import ifc4javatoolbox.ifc4.IfcProject;
 import ifc4javatoolbox.ifcmodel.IfcModel;

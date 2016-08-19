@@ -1,4 +1,6 @@
-package demo;
+package limit.theory;
+import limit.theory.IfcSpatialStructure;
+import limit.theory.IfcTreeRenderer;
 import ifc4javatoolbox.ifcmodel.IfcModel;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
