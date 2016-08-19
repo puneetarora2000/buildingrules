@@ -23,6 +23,9 @@ public class RuleReader {
 
         public ArrayList<String[]> ReadCSVfile(File DataFile) {
             try {
+                
+                System.out.println(DataFile.getAbsoluteFile());
+                
                 BufferedReader brd = new BufferedReader(new FileReader(DataFile));
                 while (brd.ready()) {
                     String st = brd.readLine();

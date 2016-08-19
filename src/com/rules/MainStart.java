@@ -157,6 +157,7 @@ public class MainStart extends javax.swing.JFrame {
     private void mnuOpenRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOpenRulesActionPerformed
         // TODO add your handling code here:
         String RuleFileName = "";
+        String BaseDir = "D:\\Dropbox\\RaninderBox\\";
          ArrayList<String[]> Rs2 = null;
          File DataFile=null;
         String csvfilename =  "";
@@ -174,8 +175,9 @@ public class MainStart extends javax.swing.JFrame {
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setApproveButtonToolTipText("Kindly Open Rule File");
         chooser.setApproveButtonText("Kindly Open Rule File");
-        File workingDirectory = new File(System.getProperty("user.dir"));
-
+       
+        //File workingDirectory = new File(System.getProperty("user.dir"));
+        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\");
         chooser.setCurrentDirectory(workingDirectory);
         
         
@@ -190,7 +192,7 @@ public class MainStart extends javax.swing.JFrame {
         
         try{
         
-          DataFile = new File(RuleFileName);
+          DataFile = new File(BaseDir+RuleFileName);
            Rs2 = Rd.ReadCSVfile(DataFile);
           
         }catch(Exception e){
