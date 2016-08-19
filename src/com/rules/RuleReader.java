@@ -24,9 +24,7 @@ public class RuleReader {
         private final ArrayList<String[]> Rs = new ArrayList<>();
         private String[] OneRow;
 
-        
-        
-        
+         
         public ArrayList<String[]> ReadCSVfile(File DataFile) {
             try {
                 

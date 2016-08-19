@@ -34,6 +34,21 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="."/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="mnuGenerateICF">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Generate"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuGenerateICFActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -94,6 +109,7 @@
                       </Group>
                       <Component id="btnInvokeCheker" min="-2" pref="148" max="-2" attributes="0"/>
                       <Component id="btnIFCupload" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="btnIFCViewer" min="-2" pref="148" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
@@ -106,8 +122,10 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="311" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Component id="btnInvokeCheker" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnIFCViewer" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnIFCupload" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -195,6 +213,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInvokeChekerActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnIFCViewer">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="IFC Viewer"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIFCViewerActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
