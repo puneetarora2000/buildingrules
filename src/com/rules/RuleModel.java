@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 class RuleModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
-    private final String[] columnNames = {"1", "2", "3", "4", "5", "6", "7", "8"};
+    private final String[] columnNames = {"S.No", "Project", "Building", "SiteName", "RuleSet", "Rule", "RuleExpression", "Description"};
     private ArrayList<String[]> Data = new ArrayList<>();
 
     public void AddCSVData(ArrayList<String[]> DataIn) {

@@ -33,7 +33,7 @@ public class RuleReader {
             } // end of try
             catch (IOException e) {
                 String errmsg = e.getMessage();
-                System.out.println("File not found:" + errmsg);
+                System.out.println("Why the File is not found:" + errmsg);
             } // end of Catch
             return Rs;
         }// end of ReadFile method

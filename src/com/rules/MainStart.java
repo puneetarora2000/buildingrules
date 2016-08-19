@@ -157,6 +157,8 @@ public class MainStart extends javax.swing.JFrame {
     private void mnuOpenRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOpenRulesActionPerformed
         // TODO add your handling code here:
         String RuleFileName = "";
+         ArrayList<String[]> Rs2 = null;
+         File DataFile=null;
         String csvfilename =  "";
          RuleReader Rd = new RuleReader();
          RuleModel rulemodel = new RuleModel();
@@ -172,7 +174,12 @@ public class MainStart extends javax.swing.JFrame {
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setApproveButtonToolTipText("Kindly Open Rule File");
         chooser.setApproveButtonText("Kindly Open Rule File");
-        //chooser.setCurrentDirectory();
+        File workingDirectory = new File(System.getProperty("user.dir"));
+
+        chooser.setCurrentDirectory(workingDirectory);
+        
+        
+        
         chooser.setMultiSelectionEnabled(false);
       returnVal = chooser.showOpenDialog(this);
    
@@ -181,9 +188,20 @@ public class MainStart extends javax.swing.JFrame {
         System.out.println("Kindly Open Rule File: " +
            RuleFileName);
         
-        File DataFile = new File(RuleFileName);
+        try{
         
-        ArrayList<String[]> Rs2 = Rd.ReadCSVfile(DataFile);
+          DataFile = new File(RuleFileName);
+           Rs2 = Rd.ReadCSVfile(DataFile);
+          
+        }catch(Exception e){
+        
+            System.out.println("File Path Problem :"+e.getMessage());
+        
+        }
+        
+        
+        
+        
         rulemodel.AddCSVData(Rs2);
        
         
@@ -191,7 +209,7 @@ public class MainStart extends javax.swing.JFrame {
         
     }else{
     
-    
+        System.out.println("User Interpted !!!");
     
     }
         
