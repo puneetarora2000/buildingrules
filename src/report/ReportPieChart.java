@@ -27,10 +27,10 @@ public class ReportPieChart {
     private static final String KEY1 = "Conformance ";
     public static final String KEY2 = "Non-Conformance";
 
-    public static void main(String[] args) {
+    public static void GenrateChart(double conformance , double non_conformance) {
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue(KEY1, 40);
-        dataset.setValue(KEY2, 77);
+        dataset.setValue(KEY1, conformance);
+        dataset.setValue(KEY2, non_conformance);
 
         JFreeChart someChart = ChartFactory.createPieChart(
             "Conformance vs Non-Conformance of Rules \n Total Rule 100 \n Project Name \n BuildingName \n SiteName ", dataset, true, true, false);

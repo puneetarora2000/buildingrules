@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.rules;
 
 import java.io.File;
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import report.ReportPieChart;
 
 /**
  *
@@ -18,16 +18,18 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MainStart extends javax.swing.JFrame {
 
-    
     JFileChooser chooser = null;
-     int returnVal =0;
+    JFileChooser uploader = null;
     
+    int returnVal = 0;
+
     /**
      * Creates new form MainStart
      */
     public MainStart() {
         initComponents();
         chooser = new JFileChooser();
+        uploader = new JFileChooser();
     }
 
     /**
@@ -42,13 +44,14 @@ public class MainStart extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         RuleTable = new javax.swing.JTable();
+        btnIFCupload = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnInvokeCheker = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuOpenRules = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         Exit = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        mnuGenerateReport = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rule Checker ");
@@ -88,19 +91,52 @@ public class MainStart extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(RuleTable);
 
+        btnIFCupload.setText("Upload IFC");
+        btnIFCupload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIFCuploadActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(204, 204, 255));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Thesis Topic");
+
+        btnInvokeCheker.setText("Invoke Checker");
+        btnInvokeCheker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvokeChekerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnInvokeCheker, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIFCupload, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(btnInvokeCheker)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIFCupload))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -128,20 +164,13 @@ public class MainStart extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Process");
-
-        mnuGenerateReport.setText("GenerateReport");
-        jMenu2.add(mnuGenerateReport);
-
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,88 +187,135 @@ public class MainStart extends javax.swing.JFrame {
         // TODO add your handling code here:
         String RuleFileName = "";
         String BaseDir = "D:\\Dropbox\\RaninderBox\\";
-         ArrayList<String[]> Rs2 = null;
-         File DataFile=null;
-        String csvfilename =  "";
-         RuleReader Rd = new RuleReader();
-         RuleModel rulemodel = new RuleModel();
-         this.RuleTable.setModel(rulemodel);
-         
+        ArrayList<String[]> Rs2 = null;
+        File DataFile = null;
+        String csvfilename = "";
+        RuleReader Rd = new RuleReader();
+        RuleModel rulemodel = new RuleModel();
+        this.RuleTable.setModel(rulemodel);
+
 //http://stackoverflow.com/questions/22864095/reading-data-from-a-specific-csv-file-and-displaying-it-in-a-jtable
-         
-         
-    FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        "CSV Files", "csv", "txt");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "CSV Files", "csv", "txt");
         chooser.setDialogTitle("Open or Import Rule File");
         chooser.setFileFilter(filter);
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setApproveButtonToolTipText("Kindly Open Rule File");
         chooser.setApproveButtonText("Kindly Open Rule File");
-       
+
         //File workingDirectory = new File(System.getProperty("user.dir"));
         File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\");
         chooser.setCurrentDirectory(workingDirectory);
-        
-        
-        
+
         chooser.setMultiSelectionEnabled(false);
-      returnVal = chooser.showOpenDialog(this);
-   
-    if(returnVal == JFileChooser.APPROVE_OPTION) {
-        RuleFileName = chooser.getSelectedFile().getName();
-        System.out.println("Kindly Open Rule File: " +
-           RuleFileName);
-        
-        try{
-        
-          DataFile = new File(BaseDir+RuleFileName);
-           Rs2 = Rd.ReadCSVfile(DataFile);
-          
-        }catch(Exception e){
-        
-            System.out.println("File Path Problem :"+e.getMessage());
-        
+        returnVal = chooser.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            RuleFileName = chooser.getSelectedFile().getName();
+            System.out.println("Kindly Open Rule File: "
+                    + RuleFileName);
+
+            try {
+
+                DataFile = new File(BaseDir + RuleFileName);
+                Rs2 = Rd.ReadCSVfile(DataFile);
+
+            } catch (Exception e) {
+
+                System.out.println("File Path Problem :" + e.getMessage());
+
+            }
+
+            rulemodel.AddCSVData(Rs2);
+
+        } else {
+
+            System.out.println("User Interpted !!!");
+
         }
-        
-        
-        
-        
-        rulemodel.AddCSVData(Rs2);
-       
-        
-        
-        
-    }else{
-    
-        System.out.println("User Interpted !!!");
-    
-    }
-        
-        
+
+
     }//GEN-LAST:event_mnuOpenRulesActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         // TODO add your handling code here:
-        
+
         System.exit(1);
-        
+
     }//GEN-LAST:event_ExitActionPerformed
 
     private void RuleTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RuleTableMouseClicked
         // TODO add your handling code here:
-     if (evt.getClickCount() == 2)
-  {
-    JTable source = (JTable)evt.getSource();
-    int rowIndex = source.rowAtPoint(evt.getPoint());
+        if (evt.getClickCount() == 2) {
+            JTable source = (JTable) evt.getSource();
+            int rowIndex = source.rowAtPoint(evt.getPoint());
+            int colIndex = source.columnAtPoint(evt.getPoint());
+            
+            source.setToolTipText("Checking Rule at:" + colIndex +","+rowIndex);
+            
     // get data from table model using row index
-    // navigate to panel
-    System.out.println("You Clicked On :"+rowIndex);
-    
-  }
-        
-        
-        
+            // navigate to panel
+            System.out.println("Checking Rule at:" + colIndex +","+rowIndex);
+            
+
+        }
+
+
     }//GEN-LAST:event_RuleTableMouseClicked
+
+    private void btnIFCuploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIFCuploadActionPerformed
+        // TODO add your handling code here:
+        
+        String IFCFileName = "";
+        
+          FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "IFC Files", ".ifc", "txt");
+        uploader.setDialogTitle("Open IFC  File");
+        uploader.setFileFilter(filter);
+        uploader.setAcceptAllFileFilterUsed(false);
+        uploader.setApproveButtonToolTipText("Kindly IFC  File");
+        uploader.setApproveButtonText("Kindly IFC File");
+
+        //File workingDirectory = new File(System.getProperty("user.dir"));
+        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\");
+        uploader.setCurrentDirectory(workingDirectory);
+
+        uploader.setMultiSelectionEnabled(false);
+        returnVal = uploader.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            IFCFileName = chooser.getSelectedFile().getName();
+            System.out.println("Kindly Open IFC File: "
+                    + IFCFileName);
+
+            try {
+
+               // DataFile = new File(BaseDir + RuleFileName);
+                //Rs2 = Rd.ReadICFfile(DataFile);
+
+            } catch (Exception e) {
+
+                System.out.println("IFC File Path Problem :" + e.getMessage());
+
+            }
+        
+        }
+    }//GEN-LAST:event_btnIFCuploadActionPerformed
+
+    private void btnInvokeChekerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvokeChekerActionPerformed
+        // TODO add your handling code here:
+        double conformance = 01;
+        double non_conformance = 20;
+        
+        
+        
+        
+        System.out.println("Execute Checker !!!\n & Generate Report");
+        
+        report.ReportPieChart.GenrateChart(conformance, non_conformance);
+        
+        
+    }//GEN-LAST:event_btnInvokeChekerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,13 +355,14 @@ public class MainStart extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Exit;
     private javax.swing.JTable RuleTable;
+    private javax.swing.JButton btnIFCupload;
+    private javax.swing.JButton btnInvokeCheker;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JMenuItem mnuGenerateReport;
     private javax.swing.JMenuItem mnuOpenRules;
     // End of variables declaration//GEN-END:variables
 }
