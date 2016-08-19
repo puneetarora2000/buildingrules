@@ -224,6 +224,10 @@ public class CheckIFC extends JFrame
 					try {
 						if(file.getAbsolutePath().endsWith("ifc"))
 							ifcModel.readStepFile(file);
+                                                
+                                                        
+                                                
+                                                
 						else ifcModel.readIfcZipFile(file);
 					}
 					catch (Exception e) {

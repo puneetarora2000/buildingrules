@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 
-package limit.theory;
+package com.rules;
 
 /**
  *
  * @author Ecologic
  */
-public class WallsLimits {
+public class Common {
+    
+    public static IfcFileStorage = "D://Dropbox//";
+    
     
 }

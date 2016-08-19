@@ -957,14 +957,14 @@ public class IfcModel
 				null, null, null, null, null);
 		newObjects.add(ifcPerson);
 		IfcOrganization ifcOrganization = new IfcOrganization(null,
-				new IfcLabel("ifctoolsproject.com", true), null, null, null);
+				new IfcLabel("raninder-thesis.com", true), null, null, null);
 		newObjects.add(ifcOrganization);
 		IfcPersonAndOrganization ifcPersonAndOrganization = new IfcPersonAndOrganization(
 				ifcPerson, ifcOrganization, null);
 		newObjects.add(ifcPersonAndOrganization);
 		IfcApplication ifcApplication = new IfcApplication(ifcOrganization,
-				new IfcLabel("1.0", true), new IfcLabel("ifctoolsproject.com",
-						true), new IfcIdentifier("ifctoolsproject.com", true));
+				new IfcLabel("1.0", true), new IfcLabel("raninder-thesis.com",
+						true), new IfcIdentifier("raninder-thesis.com", true));
 		newObjects.add(ifcApplication);
 
 		IfcOwnerHistory ifcOwnerHistory = new IfcOwnerHistory(

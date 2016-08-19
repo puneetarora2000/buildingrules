@@ -370,7 +370,10 @@ public class MainStart extends javax.swing.JFrame {
      */
     private void mnuGenerateICFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGenerateICFActionPerformed
         // TODO add your handling code here:
-
+        String FileName = "test.ifc";
+        File stepFile = new File(Common.IfcFileStorage+FileName);
+        
+        
         System.out.println("Generate IFC Files");
 
     }//GEN-LAST:event_mnuGenerateICFActionPerformed
