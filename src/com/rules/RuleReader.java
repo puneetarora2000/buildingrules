@@ -14,13 +14,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
+ *  This is basic class made to read typical any csv file . ..in our case 
+ *  the rules are made from the web based application called rule engine 
+ *  when for a project rules are complete the , there is facility to export these rules 
+ *  this exported rules are imported or read here using this class function calls .
  * @author Ecologic
  */
 public class RuleReader {
         private final ArrayList<String[]> Rs = new ArrayList<>();
         private String[] OneRow;
 
+        
+        
+        
         public ArrayList<String[]> ReadCSVfile(File DataFile) {
             try {
                 
