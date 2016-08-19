@@ -158,11 +158,12 @@ public class MainStart extends javax.swing.JFrame {
         // TODO add your handling code here:
         String RuleFileName = "";
         String csvfilename =  "";
-         CSVFile Rd = new CSVFile();
+         RuleReader Rd = new RuleReader();
          RuleModel rulemodel = new RuleModel();
          this.RuleTable.setModel(rulemodel);
          
-//http://stackoverflow.com/questions/22864095/reading-data-from-a-specific-csv-file-and-displaying-it-in-a-jtable         
+//http://stackoverflow.com/questions/22864095/reading-data-from-a-specific-csv-file-and-displaying-it-in-a-jtable
+         
          
     FileNameExtensionFilter filter = new FileNameExtensionFilter(
         "CSV Files", "csv", "txt");

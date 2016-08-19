@@ -17,7 +17,7 @@ import java.util.Arrays;
  *
  * @author Ecologic
  */
-public class CSVFile {
+public class RuleReader {
         private final ArrayList<String[]> Rs = new ArrayList<>();
         private String[] OneRow;
 
@@ -37,4 +37,4 @@ public class CSVFile {
             } // end of Catch
             return Rs;
         }// end of ReadFile method
-    }// end of CSVFile cla
+    }// end of RuleReader cla
