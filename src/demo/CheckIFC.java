@@ -39,7 +39,7 @@ import javax.swing.text.StyledDocument;
  * Visit <a href='http://www.ifctoolsproject.com'>http://www.ifctoolsproject.com</a> for more information
  * or contact us directly: <a href='mailto:info@ifctoolsproject.com'>info@ifctoolsproject.com</a><br>
  */
-public class Check extends JFrame
+public class CheckIFC extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	private IfcModel ifcModel = null;
@@ -65,7 +65,7 @@ public class Check extends JFrame
 	/**
 	 * Constructs a new Structure Viewer object.
 	 */
-	public Check()
+	public CheckIFC()
 	{
 		initComponents();
 	}
@@ -177,7 +177,7 @@ public class Check extends JFrame
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane
 						.showMessageDialog(
-								Check.this,
+								CheckIFC.this,
 								new String(
 										"OPEN IFC JAVA TOOLBOX\nDemo Application\n\nCopyright: CCPL BY-NC-SA 3.0 (cc) 2008\nEike Tauscher, Jan Tulke\n\nhttp://www.openifctools.com"),
 								"About", JOptionPane.INFORMATION_MESSAGE);
@@ -200,7 +200,7 @@ public class Check extends JFrame
 	private void loadFile() {
 
 		JFileChooser fileChooser = new JFileChooser();
-		if (fileChooser.showOpenDialog(Check.this) == JFileChooser.APPROVE_OPTION)
+		if (fileChooser.showOpenDialog(CheckIFC.this) == JFileChooser.APPROVE_OPTION)
 		{
 
 			final File file = fileChooser.getSelectedFile();
@@ -228,14 +228,14 @@ public class Check extends JFrame
 					}
 					catch (Exception e) {
 						e.printStackTrace();
-						JOptionPane.showMessageDialog(Check.this,
+						JOptionPane.showMessageDialog(CheckIFC.this,
 								e.getMessage(), "Error",
 								JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 					long endTime = System.currentTimeMillis();
 					progressBar.setValue(0);
-					Check.this.setTitle(file.getName());
+					CheckIFC.this.setTitle(file.getName());
 					progressBar.setStringPainted(false);
 					treeView.setIfcModel(ifcModel);
 					saveItem.setEnabled(true);
@@ -266,7 +266,7 @@ public class Check extends JFrame
 
 	private void saveFile() {
 		JFileChooser fileChooser = new JFileChooser();
-		if (fileChooser.showSaveDialog(Check.this) == JFileChooser.APPROVE_OPTION)
+		if (fileChooser.showSaveDialog(CheckIFC.this) == JFileChooser.APPROVE_OPTION)
 		{
 
 			final File file = fileChooser.getSelectedFile();
@@ -294,7 +294,7 @@ public class Check extends JFrame
 					}
 					long endTime = System.currentTimeMillis();
 					progressBar.setValue(0);
-					Check.this.setTitle(file.getName());
+					CheckIFC.this.setTitle(file.getName());
 					progressBar.setStringPainted(false);
 					treeView.setIfcModel(ifcModel);
 					String[] info = { "*************************\n", "File:\n",
@@ -342,7 +342,7 @@ public class Check extends JFrame
 		catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
 			e.printStackTrace();
 		}
-		new Check();
+		new CheckIFC();
 	}
 
 }
