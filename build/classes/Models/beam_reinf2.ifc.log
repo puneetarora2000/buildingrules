@@ -1,0 +1,27 @@
+
+
+/******************************************************************************************
+* WriteStepFile diagnostics.
+* Date:                           Fri Aug 14 09:54:10 2015 
+* Produced by:                    The EXPRESS Data Manager Version 5.02.0100.07 : 28 Aug 2013
+* Module:                         EDMstepFileFactory/EDMstandAlone
+* Host:                           HP450-01
+* Database:                       C:\Users\rdhillon\AppData\Local\Temp\{73B02172-3811-4DD9-9FC9-480A85A9538C}\ifc
+* Database version:               5507
+* Database creation date:         Fri Aug 14 09:54:09 2015
+* Model:                          DataRepository.ifc
+* Model creation date:            Fri Aug 14 09:54:10 2015
+* Header model:                   DataRepository.ifc_HeaderModel
+* Header model creation date:     Fri Aug 14 09:54:10 2015
+* Step file:                      beam_reinf2.ifc
+* EDMuser:                        sdai-user
+* EDMgroup:                       sdai-group
+* License ID and type:            5605 : Permanent license. Expiry date: 
+* EDMstepFileFactory options:     020000
+******************************************************************************************/
+
+
+------------------------------------------------------------------------------------------------
+Operation terminated successfully.
+------------------------------------------------------------------------------------------------
+

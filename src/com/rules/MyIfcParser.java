@@ -58,7 +58,8 @@ public class MyIfcParser {
                 
              IfcWall ifcWall = (IfcWall) o;
              IfcProductRepresentation representation = ifcWall.getRepresentation();
-             System.out.println("Wall Description :"+representation.getDescription());
+             LIST<IfcRepresentation> representations = representation.getRepresentations();  
+             print(representations);
             
              
              }catch(Exception e){
@@ -79,7 +80,8 @@ public class MyIfcParser {
                 
              IfcStair ifcStair = (IfcStair) o;
              IfcProductRepresentation representation = ifcStair.getRepresentation();
-             System.out.println("Stairs Description :"+representation.getDescription());
+             LIST<IfcRepresentation> representations = representation.getRepresentations();  
+             print(representations);
             
              
              }catch(Exception e){
@@ -98,7 +100,8 @@ public class MyIfcParser {
                 
              IfcFooting ifcFooting = (IfcFooting) o;
              IfcProductRepresentation representation = ifcFooting.getRepresentation();
-             System.out.println("Footing Description: "+representation.getDescription());
+             LIST<IfcRepresentation> representations = representation.getRepresentations();  
+             print(representations);
             
              
              }catch(Exception e){
@@ -132,7 +135,8 @@ public class MyIfcParser {
               try{
              IfcColumn ifcColumn = (IfcColumn) o;
              IfcProductRepresentation representation = ifcColumn.getRepresentation();
-             System.out.println("Column Description : "+representation.getDescription());
+             LIST<IfcRepresentation> representations = representation.getRepresentations();  
+             print(representations);
             
              
              }catch(Exception e){

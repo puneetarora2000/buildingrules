@@ -1,0 +1,25 @@
+
+
+/******************************************************************************************
+* ReadStepFile diagnostics.
+* Date:                           Fri Jul 10 21:11:33 2015
+* Produced by:                    The EXPRESS Data Manager Version 5.02.0100.07 : 28 Aug 2013
+* Module:                         EDMstepFileFactory/EDMstandAlone
+* Host:                           HP450-01
+* Database:                       C:\Users\rdhillon\AppData\Local\Temp\{0CC9C05F-B250-4991-9F2D-AA7F40EE8BC0}\ifc
+* Database version:               5507
+* Database creation date:         Fri Jul 10 21:11:32 2015
+* Model to populate:              DataRepository.ifcimport
+* Header model to populate:       
+* Step file name:                 beam_reinf.ifc
+* EDMuser:                        sdai-user
+* EDMgroup:                       sdai-group
+* License ID and type:            5605 : Permanent license. Expiry date: 
+* EDMstepFileFactory options:     010201000002
+******************************************************************************************/
+
+
+------------------------------------------------------------------------------------------------
+ Operation terminated successfully.
+------------------------------------------------------------------------------------------------
+

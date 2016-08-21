@@ -1,0 +1,187 @@
+
+
+/******************************************************************************************
+* ReadStepFile diagnostics.
+* Date:                           Fri Jul 10 21:18:57 2015
+* Produced by:                    The EXPRESS Data Manager Version 5.02.0100.07 : 28 Aug 2013
+* Module:                         EDMstepFileFactory/EDMstandAlone
+* Host:                           HP450-01
+* Database:                       C:\Users\rdhillon\AppData\Local\Temp\{3195C03C-BB81-4306-AC6A-37A5AF870539}\ifc
+* Database version:               5507
+* Database creation date:         Fri Jul 10 21:18:55 2015
+* Model to populate:              DataRepository.ifcimport
+* Header model to populate:       
+* Step file name:                 beam_reinf_modify.ifc
+* EDMuser:                        sdai-user
+* EDMgroup:                       sdai-group
+* License ID and type:            5605 : Permanent license. Expiry date: 
+* EDMstepFileFactory options:     010201000002
+******************************************************************************************/
+
+/*    146 */ #216= IFCPROPERTYSINGLEVALUE('Column Style',$,IFCIDENTIFIER(
+------------------------------------------------------------------------^
+*** Recoverable Error: Inconsistency: Expected: STRING - Typed value found. *** on line 146.
+                                                                         'Vertical'
+----------------------------------------------------------------------------------^
+*** Recoverable Error: 
+Failure during storing attribute: Invalid data value type. *** on line 146.
+                                                                                   ),$)
+--------------------------------------------------------------------------------------^
+*** Recoverable Error: Wrong number of attributes; expected: 9  found: 4 *** on line 146.
+                                                                                       
+/*    148 */ #218= IFCPROPERTYSINGLEVALUE('Moves With Grids'
+-----------------------------------------------------------^
+*** Recoverable Error: Inconsistency: AGGREGATE expected - STRING found. *** on line 148.
+                                                            ,$
+-------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 148.
+                                                              ,IFCBOOLEAN(
+-------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 148.
+                                                                          .T.),$
+-------------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 148.
+                                                                                )
+--------------------------------------------------------------------------------^
+*** Recoverable Error: Wrong number of attributes; expected: 1  found: 4 *** on line 148.
+                                                                                 
+/*    149 */ #219= IFCPROPERTYSINGLEVALUE('Room Bounding'
+--------------------------------------------------------^
+*** Recoverable Error: Inconsistency: INSTANCE expected - STRING found. *** on line 149.
+                                                         ,$,IFCBOOLEAN(
+----------------------------------------------------------------------^
+*** Recoverable Error: Inconsistency: Expected: INSTANCE - Typed value found. *** on line 149.
+                                                                       .T.
+-------------------------------------------------------------------------^
+*** Recoverable Error: Inconsistency: INSTANCE expected - BOOLEAN found. *** on line 149.
+                                                                          ),$
+----------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 149.
+                                                                             )
+-----------------------------------------------------------------------------^
+*** Recoverable Error: Wrong number of attributes; expected: 3  found: 4 *** on line 149.
+                                                                              
+/*    150 */ #220= IFCPROPERTYSINGLEVALUE('Top Level'
+----------------------------------------------------^
+*** Recoverable Error: Inconsistency: INSTANCE expected - STRING found. *** on line 150.
+                                                     ,$,IFCLABEL(
+----------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 150.
+                                                                 'Level: Level 2'),$
+-----------------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 150.
+                                                                                    )
+------------------------------------------------------------------------------------^
+*** Recoverable Error: Wrong number of attributes; expected: 2  found: 4 *** on line 150.
+                                                                                     
+/*    151 */ #221= IFCPROPERTYSINGLEVALUE('Top Offset'
+-----------------------------------------------------^
+*** Recoverable Error: Inconsistency: AGGREGATE expected - STRING found. *** on line 151.
+                                                      ,$
+-------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 151.
+                                                        ,IFCLENGTHMEASURE(
+-------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 151.
+                                                                          0.),$
+------------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 151.
+                                                                               )
+-------------------------------------------------------------------------------^
+*** Recoverable Error: Wrong number of attributes; expected: 1  found: 4 *** on line 151.
+                                                                                
+/*    152 */ #222= IFCPROPERTYSINGLEVALUE('Phase Created'
+--------------------------------------------------------^
+*** Recoverable Error: Inconsistency: INSTANCE expected - STRING found. *** on line 152.
+                                                         ,$,IFCLABEL(
+--------------------------------------------------------------------^
+*** Recoverable Error: Inconsistency: Expected: INSTANCE - Typed value found. *** on line 152.
+                                                                     'New Construction'
+--------------------------------------------------------------------------------------^
+*** Recoverable Error: Inconsistency: INSTANCE expected - STRING found. *** on line 152.
+                                                                                       ),$
+-----------------------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 152.
+                                                                                          )
+------------------------------------------------------------------------------------------^
+*** Recoverable Error: Wrong number of attributes; expected: 3  found: 4 *** on line 152.
+                                                                                           
+/*    207 */ #305
+------------------------------------^
+*** Recoverable Error: 
+Failure during storing attribute: Instance does not exist. *** on line 207.
+                                     
+/*    207 */ #164
+-----------------------------------------^
+*** Recoverable Error: 
+Failure during storing attribute: Instance does not exist. *** on line 207.
+                                          
+/*    208 */ #312
+--------------------------------------------------------------------------------^
+*** Recoverable Error: Reference not found in this STEP file or no corresponding instance in EDM *** on line 208.
+                                                                                 
+/*   1772 */ #312
+-------------------------------------------------------------------------------------------------------------------------------^
+*** Recoverable Error: Reference not found in this STEP file or no corresponding instance in EDM *** on line 1772.
+                                                                                                                                
+/*   1772 */ #220)
+*** Error in column number: 130 ***
+*** Recoverable Error: Wrong number of attributes; expected: 9  found: 10 *** on line 1772.
+
+/*   1779 */ #312= IFCSTRUCTURALLOADCASE
+---------------------------------------^
+*** Recoverable Error: Cannot retrieve attributes for instance. Possibly undefined instance type *** on line 1779.
+                                        
+/*   1779 */ #41,'Structural Load Case #1',$
+-------------------------------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 1779.
+                                                                                                  ,$
+---------------------------------------------------------------------------------------------------^
+*** Recoverable Error: No parameter expected *** on line 1779.
+                                                                                                    ,.LOAD_CASE.,.NOTDEFINED.,.NOTDEFINED.,1.,$
+*** Error in column number: 130 ***
+*** Recoverable Error: No parameter expected *** on line 1779.
+
+/*   1781 */ #312
+---------------------------------------------------------------------------------------------------------^
+*** Recoverable Error: Reference not found in this STEP file or no corresponding instance in EDM *** on line 1781.
+                                                                                                          ,.T.);
+/*   1782 */ ENDSEC;
+/*   1783 */ 
+/*   1784 */ END-ISO-10303-21;
+/*   1785 */ 
+------------^
+*** Recoverable Error: Duplicated entity name: #216  *** on line 1772.
+             
+------------^
+*** Recoverable Error: Duplicated entity name: #218  *** on line 1773.
+             
+------------^
+*** Recoverable Error: Duplicated entity name: #219  *** on line 1774.
+             
+------------^
+*** Recoverable Error: Duplicated entity name: #220  *** on line 1775.
+             
+------------^
+*** Recoverable Error: Duplicated entity name: #221  *** on line 1776.
+             
+------------^
+*** Recoverable Error: Duplicated entity name: #222  *** on line 1777.
+             
+------------^
+*** Recoverable Error: Duplicated entity name: #312  *** on line 1779.
+             
+
+------------------------------------------------------------------------------------------------
+ Operation terminated with error: Error/warning during STEP File read operation.
+
+
+Fatal errors...........: 0
+Recoverable errors.....: 44
+Warnings...............: 0
+Info...................: 0
+total..................: 44
+Lines..................: 1785
+
+------------------------------------------------------------------------------------------------
+

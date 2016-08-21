@@ -1,0 +1,29 @@
+
+
+/******************************************************************************************
+* WriteXmlFile diagnostics.
+* Date:                           Wed Aug 12 18:39:38 2015 
+* Produced by:                    The EXPRESS Data Manager Version 5.02.0100.07 : 28 Aug 2013
+* Module:                         EDMxmlFactory/EDMstandAlone
+* Host:                           HP450-01
+* Database:                       C:\Users\rdhillon\AppData\Local\Temp\{4FE08137-AE03-41FA-9BDD-323AE11A92FC}\ifc
+* Database version:               5507
+* Database creation date:         Wed Aug 12 18:39:30 2015
+* Express schema:                 IFC2X3
+* Model:                          DataRepository.ifc
+* Model creation date:            Wed Aug 12 18:39:31 2015
+* Header model:                   DataRepository.ifc_HeaderModel
+* Header model creation date:     Wed Aug 12 18:39:31 2015
+* xmlFileName                     beam_reinf2.ifcxml
+* xmlconfiguration                IFCXML_Official
+* EDMuser:                        sdai-user
+* EDMgroup:                       sdai-group
+* License ID and type:            5605 : Permanent license. Expiry date: 
+* EDMxmlFactory options:          02000200
+******************************************************************************************/
+
+
+------------------------------------------------------------------------------------------------
+Operation terminated successfully.
+------------------------------------------------------------------------------------------------
+

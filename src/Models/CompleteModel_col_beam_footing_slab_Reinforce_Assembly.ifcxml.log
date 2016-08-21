@@ -1,0 +1,29 @@
+
+
+/******************************************************************************************
+* WriteXmlFile diagnostics.
+* Date:                           Fri Jun 26 11:25:13 2015 
+* Produced by:                    The EXPRESS Data Manager Version 5.02.0100.07 : 28 Aug 2013
+* Module:                         EDMxmlFactory/EDMstandAlone
+* Host:                           HP450-01
+* Database:                       C:\Users\rdhillon\AppData\Local\Temp\{3E6E0FF9-CA6B-4540-8B7D-8362033B497E}\ifc
+* Database version:               5507
+* Database creation date:         Fri Jun 26 11:25:11 2015
+* Express schema:                 IFC2X3
+* Model:                          DataRepository.ifc
+* Model creation date:            Fri Jun 26 11:25:12 2015
+* Header model:                   DataRepository.ifc_HeaderModel
+* Header model creation date:     Fri Jun 26 11:25:12 2015
+* xmlFileName                     CompleteModel_col_beam_footing_slab_Reinforce_Assembly.ifcxml
+* xmlconfiguration                IFCXML_Official
+* EDMuser:                        sdai-user
+* EDMgroup:                       sdai-group
+* License ID and type:            5605 : Permanent license. Expiry date: 
+* EDMxmlFactory options:          02000200
+******************************************************************************************/
+
+
+------------------------------------------------------------------------------------------------
+Operation terminated successfully.
+------------------------------------------------------------------------------------------------
+
