@@ -27,6 +27,7 @@ public class MainStart extends javax.swing.JFrame {
 
     JFileChooser chooser = null;
     JFileChooser uploader = null;
+    String BaseDir = "D:\\Dropbox\\RaninderBox\\";
 
     int returnVal = 0;
 
@@ -119,7 +120,7 @@ public class MainStart extends javax.swing.JFrame {
             }
         });
 
-        btnIFCViewer.setText("IFC Viewer");
+        btnIFCViewer.setText("IFC Reader");
         btnIFCViewer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIFCViewerActionPerformed(evt);
@@ -218,7 +219,7 @@ public class MainStart extends javax.swing.JFrame {
     private void mnuOpenRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOpenRulesActionPerformed
         // TODO add your handling code here:
         String RuleFileName = "";
-        String BaseDir = "D:\\Dropbox\\RaninderBox\\";
+        
         ArrayList<String[]> Rs2 = null;
         File DataFile = null;
         String csvfilename = "";
@@ -236,7 +237,7 @@ public class MainStart extends javax.swing.JFrame {
         chooser.setApproveButtonText("Kindly Open Rule File");
 
         //File workingDirectory = new File(System.getProperty("user.dir"));
-        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\");
+        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\models");
         chooser.setCurrentDirectory(workingDirectory);
 
         chooser.setMultiSelectionEnabled(false);
@@ -300,10 +301,10 @@ public class MainStart extends javax.swing.JFrame {
         String IFCFileName = "";
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "IFC Files", ".ifc", "txt");
+                "IFC Files", "ifc", "txt");
         uploader.setDialogTitle("Open IFC  File");
         uploader.setFileFilter(filter);
-        uploader.setAcceptAllFileFilterUsed(false);
+        uploader.setAcceptAllFileFilterUsed(true);
         uploader.setApproveButtonToolTipText("Kindly IFC  File");
         uploader.setApproveButtonText("Kindly IFC File");
 
@@ -315,14 +316,23 @@ public class MainStart extends javax.swing.JFrame {
         returnVal = uploader.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            IFCFileName = chooser.getSelectedFile().getName();
-            System.out.println("Kindly Open IFC File: "
-                    + IFCFileName);
+            
+            IFCFileName = uploader.getSelectedFile().getName();
+            String CurrDir = uploader.getCurrentDirectory().getAbsolutePath();
+            System.out.println("Kindly Open IFC File: " + CurrDir+"\\" + IFCFileName);
 
             try {
 
                // DataFile = new File(BaseDir + RuleFileName);
                 //Rs2 = Rd.ReadICFfile(DataFile);
+                
+                 MyIfcParser parser = new MyIfcParser();
+                 Common.msg("Starting to Read IFC File ");
+                 String ProjectName =  parser.getProjectName(CurrDir+"\\"+IFCFileName);
+                 System.out.println("End of Reading File ");
+                
+                
+                
             } catch (Exception e) {
 
                 System.out.println("IFC File Path Problem :" + e.getMessage());
@@ -351,8 +361,9 @@ public class MainStart extends javax.swing.JFrame {
      */
     private void btnIFCViewerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIFCViewerActionPerformed
         // TODO add your handling code here:
-
-        System.out.println("ICF VIEWER !!!!");
+        MyIfcParser parser = new MyIfcParser();
+        String ProjectName =  parser.getProjectName(null);
+        System.out.println("ICF VIEWER !!!!"+ProjectName);
         
         
         

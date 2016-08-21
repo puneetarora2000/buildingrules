@@ -71,6 +71,7 @@ public class IfcUnitAssignment extends InternalAccessClass implements ClassInter
 	/**
 	 * This method is used internally and should NOT be used for own purposes.
 	**/
+        @Override
 	String[] getNonInverseAttributeTypes()
 	{
 		return IfcUnitAssignment.nonInverseAttributes;	}

@@ -12,7 +12,16 @@ package com.rules;
  */
 public class Common {
     
-    public static IfcFileStorage = "D://Dropbox//";
+    public static String IfcFileStorage = "D://Dropbox//";
+    public static String IfcFile2beTested  = "D:\\allCustomers\\RaninderD\\MrsDillion\\Models\\";
+   
+    
+    public static void msg(String msg){
+    
+        System.out.println(msg);
+    
+    }
+    
     
     
 }
