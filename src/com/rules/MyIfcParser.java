@@ -13,15 +13,40 @@ import ifc4javatoolbox.ifc4.ClassInterface;
 import ifc4javatoolbox.ifc4.File_Description;
 import ifc4javatoolbox.ifc4.File_Name;
 import ifc4javatoolbox.ifc4.File_Schema;
+import ifc4javatoolbox.ifc4.IfcAmountOfSubstanceMeasure;
+import ifc4javatoolbox.ifc4.IfcAreaMeasure;
 import ifc4javatoolbox.ifc4.IfcBeam;
 import ifc4javatoolbox.ifc4.IfcColumn;
+import ifc4javatoolbox.ifc4.IfcContextDependentMeasure;
+import ifc4javatoolbox.ifc4.IfcCountMeasure;
+import ifc4javatoolbox.ifc4.IfcDescriptiveMeasure;
+import ifc4javatoolbox.ifc4.IfcElectricCurrentMeasure;
 import ifc4javatoolbox.ifc4.IfcFooting;
 import ifc4javatoolbox.ifc4.IfcLabel;
+import ifc4javatoolbox.ifc4.IfcLengthMeasure;
+import ifc4javatoolbox.ifc4.IfcLuminousIntensityMeasure;
+import ifc4javatoolbox.ifc4.IfcMassMeasure;
+import ifc4javatoolbox.ifc4.IfcMeasureValue;
+import ifc4javatoolbox.ifc4.IfcNormalisedRatioMeasure;
+import ifc4javatoolbox.ifc4.IfcNumericMeasure;
+import ifc4javatoolbox.ifc4.IfcObjectPlacement;
+import ifc4javatoolbox.ifc4.IfcParameterValue;
+import ifc4javatoolbox.ifc4.IfcPlaneAngleMeasure;
+import ifc4javatoolbox.ifc4.IfcPositiveLengthMeasure;
+import ifc4javatoolbox.ifc4.IfcPositivePlaneAngleMeasure;
 import ifc4javatoolbox.ifc4.IfcProductRepresentation;
 import ifc4javatoolbox.ifc4.IfcProject;
+import ifc4javatoolbox.ifc4.IfcRatioMeasure;
+import ifc4javatoolbox.ifc4.IfcRelDefines;
 import ifc4javatoolbox.ifc4.IfcRepresentation;
+import ifc4javatoolbox.ifc4.IfcSimpleValue;
 import ifc4javatoolbox.ifc4.IfcSlab;
+import ifc4javatoolbox.ifc4.IfcSolidAngleMeasure;
 import ifc4javatoolbox.ifc4.IfcStair;
+import ifc4javatoolbox.ifc4.IfcThermodynamicTemperatureMeasure;
+import ifc4javatoolbox.ifc4.IfcTimeMeasure;
+import ifc4javatoolbox.ifc4.IfcValue;
+import ifc4javatoolbox.ifc4.IfcVolumeMeasure;
 import ifc4javatoolbox.ifc4.IfcWall;
 import ifc4javatoolbox.ifc4.LIST;
 import ifc4javatoolbox.ifc4.STRING;
@@ -29,8 +54,12 @@ import ifc4javatoolbox.ifcmodel.IfcModel;
 import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class MyIfcParser {
+    
+    private static IfcObjectPlacement placementPoints;
+    private static IfcObjectPlacement colPlacements;
 
     /**
           Common.msg("+++++++++++++++++++++");
@@ -57,6 +86,12 @@ public class MyIfcParser {
              System.out.println();
                 
              IfcWall ifcWall = (IfcWall) o;
+             Common.msg("Name of the Wall : "+ifcWall.getName().getDecodedValue());
+             
+             // To do ? 
+             placementPoints = ifcWall.getObjectPlacement();
+             
+                    
              IfcProductRepresentation representation = ifcWall.getRepresentation();
              LIST<IfcRepresentation> representations = representation.getRepresentations();  
              print(representations);
@@ -135,6 +170,12 @@ public class MyIfcParser {
               try{
              IfcColumn ifcColumn = (IfcColumn) o;
              IfcProductRepresentation representation = ifcColumn.getRepresentation();
+               
+             colPlacements =  ifcColumn.getObjectPlacement();
+               
+             
+               
+               
              LIST<IfcRepresentation> representations = representation.getRepresentations();  
              print(representations);
             
@@ -168,7 +209,10 @@ public class MyIfcParser {
         STRING authorization = fileName.getauthorization();
         STRING names = fileName.getname();
         File_Schema schema = ifcModel.getFile_Schema();
-
+                
+        
+                    
+        
             IfcProject ifcProject = ifcModel.getIfcProject();
             
             if(ifcProject.getName()!=null){
@@ -219,5 +263,119 @@ public class MyIfcParser {
         return ProjectName;
 
     }
+    
+    
+    public boolean is_IfcSimpleValue(IfcValue value) {
+        if (value instanceof IfcSimpleValue) {
+            return true;
+        }
+        return false;
+    }
+    
+    
+    public boolean is_IfcMeasureValue(IfcValue value) {
+        if (value instanceof IfcMeasureValue) {
+            return true;
+        }
+        return false;
+    
+    
+    
+     public String get_ifcmeasurevalue(IfcValue value) {
+        String result = "QQ";
+        if (value instanceof IfcAreaMeasure) {
+            result = ((IfcAreaMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcContextDependentMeasure) {
+            result = ((IfcContextDependentMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        //
+        if (value instanceof IfcContextDependentMeasure) {
+            result = ((IfcContextDependentMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcCountMeasure) {
+            result = ((IfcCountMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcDescriptiveMeasure) {
+            result = ((IfcDescriptiveMeasure) value).getWrappedValue();
+            return result;
+        }
+        //
+        if (value instanceof IfcElectricCurrentMeasure) {
+            result = ((IfcElectricCurrentMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcLengthMeasure) {
+            result = ((IfcLengthMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcLuminousIntensityMeasure) {
+            result = ((IfcLuminousIntensityMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcMassMeasure) {
+            result = ((IfcMassMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcNormalisedRatioMeasure) {
+            result = ((IfcNormalisedRatioMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        //
+        if (value instanceof IfcNumericMeasure) {
+            result = ((IfcNumericMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcParameterValue) {
+            result = ((IfcParameterValue) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcPlaneAngleMeasure) {
+            result = ((IfcPlaneAngleMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcPositiveLengthMeasure) {
+            result = ((IfcPositiveLengthMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcPositivePlaneAngleMeasure) {
+            result = ((IfcPositivePlaneAngleMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcPositiveRatioMeasure) {
+            result = ((IfcPositiveRatioMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcRatioMeasure) {
+            result = ((IfcRatioMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcSolidAngleMeasure) {
+            result = ((IfcSolidAngleMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcThermodynamicTemperatureMeasure) {
+            result = ((IfcThermodynamicTemperatureMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcTimeMeasure) {
+            result = ((IfcTimeMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcVolumeMeasure) {
+            result = ((IfcVolumeMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        if (value instanceof IfcAmountOfSubstanceMeasure) {
+            result = ((IfcAmountOfSubstanceMeasure) value).getWrappedValueAsString();
+            return result;
+        }
+        return result;
+    }
+    
 
 }
