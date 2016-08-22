@@ -1,0 +1,1 @@
+ifc4javatoolbox.guidcompressor.Guid
