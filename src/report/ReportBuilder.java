@@ -21,7 +21,7 @@ import sun.security.x509.X500Name;
  *
  * @author Ecologic
  */
-public class ReportBuild {
+public class ReportBuilder {
 
     void appendTag(StringBuilder sb, String tag, String contents) {
         sb.append('<').append(tag).append('>');
@@ -124,7 +124,7 @@ public class ReportBuild {
 
             stream = new FileOutputStream("D://Dropbox//RaninderBox//Reports//" + rm.getReportFileName());
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ReportBuild.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReportBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         out = new PrintStream(stream);
