@@ -16,8 +16,10 @@ import ifc4javatoolbox.ifc4.IfcProject;
 import ifc4javatoolbox.ifcmodel.IfcModel;
 import ifc4javatoolbox.step.parser.util.ProgressEvent;
 import ifc4javatoolbox.step.parser.util.StepParserProgressListener;
-
-
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import limit.theory.CheckComplianceMain;
+import limit.theory.ViewMainIFC;
 
 /**
  *
@@ -219,7 +221,7 @@ public class MainStart extends javax.swing.JFrame {
     private void mnuOpenRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOpenRulesActionPerformed
         // TODO add your handling code here:
         String RuleFileName = "";
-        
+
         ArrayList<String[]> Rs2 = null;
         File DataFile = null;
         String csvfilename = "";
@@ -298,6 +300,14 @@ public class MainStart extends javax.swing.JFrame {
     private void btnIFCuploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIFCuploadActionPerformed
         // TODO add your handling code here:
 
+        // Function for checking compliance of the rules 
+        // these rules are read from the CSV file from Rule Engine PHP
+        // 
+        CheckComplianceMain ccm = new CheckComplianceMain();
+       // Get the Rule Structure and and get it checked , return values as per HTML 
+        // Report Structure . Get call from the CSV Rule File  .
+
+        //ccm.CheckCompliance(BaseDir, null, null, operator)
         String IFCFileName = "";
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -316,23 +326,20 @@ public class MainStart extends javax.swing.JFrame {
         returnVal = uploader.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            
+
             IFCFileName = uploader.getSelectedFile().getName();
             String CurrDir = uploader.getCurrentDirectory().getAbsolutePath();
-            System.out.println("Kindly Open IFC File: " + CurrDir+"\\" + IFCFileName);
+            System.out.println("Kindly Open IFC File: " + CurrDir + "\\" + IFCFileName);
 
             try {
 
                // DataFile = new File(BaseDir + RuleFileName);
                 //Rs2 = Rd.ReadICFfile(DataFile);
-                
-                 MyIfcParser parser = new MyIfcParser();
-                 Common.msg("Starting to Read IFC File ");
-                 String ProjectName =  parser.getProjectName(CurrDir+"\\"+IFCFileName);
-                 System.out.println("End of Reading File ");
-                
-                
-                
+                MyIfcParser parser = new MyIfcParser();
+                Common.msg("Starting to Read IFC File ");
+                String ProjectName = parser.getProjectName(CurrDir + "\\" + IFCFileName);
+                System.out.println("End of Reading File ");
+
             } catch (Exception e) {
 
                 System.out.println("IFC File Path Problem :" + e.getMessage());
@@ -362,14 +369,16 @@ public class MainStart extends javax.swing.JFrame {
     private void btnIFCViewerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIFCViewerActionPerformed
         // TODO add your handling code here:
         MyIfcParser parser = new MyIfcParser();
-        String ProjectName =  parser.getProjectName(null);
-        System.out.println("ICF VIEWER !!!!"+ProjectName);
-        
-        
-        
-        
-        
-        
+        String ProjectName = parser.getProjectName(null);
+        System.out.println("ICF VIEWER !!!!" + ProjectName);
+
+       // limit.theory.ViewMainIFC obj = new ViewMainIFC();
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+        new ViewMainIFC();
 
 
     }//GEN-LAST:event_btnIFCViewerActionPerformed
@@ -382,9 +391,8 @@ public class MainStart extends javax.swing.JFrame {
     private void mnuGenerateICFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGenerateICFActionPerformed
         // TODO add your handling code here:
         String FileName = "test.ifc";
-        File stepFile = new File(Common.IfcFileStorage+FileName);
-        
-        
+        File stepFile = new File(Common.IfcFileStorage + FileName);
+
         System.out.println("Generate IFC Files");
 
     }//GEN-LAST:event_mnuGenerateICFActionPerformed
