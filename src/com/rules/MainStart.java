@@ -19,7 +19,11 @@ import ifc4javatoolbox.step.parser.util.StepParserProgressListener;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import limit.theory.CheckComplianceMain;
+import limit.theory.ComplianceResults;
 import limit.theory.ViewMainIFC;
+import report.ReportBuilder;
+import static report.ReportBuilder.GenerateHTML;
+import report.ReportTemplate;
 
 /**
  *
@@ -306,8 +310,6 @@ public class MainStart extends javax.swing.JFrame {
         CheckComplianceMain ccm = new CheckComplianceMain();
        // Get the Rule Structure and and get it checked , return values as per HTML 
         // Report Structure . Get call from the CSV Rule File  .
-
-        //ccm.CheckCompliance(BaseDir, null, null, operator)
         String IFCFileName = "";
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -332,14 +334,27 @@ public class MainStart extends javax.swing.JFrame {
             System.out.println("Kindly Open IFC File: " + CurrDir + "\\" + IFCFileName);
 
             try {
-
+                
                // DataFile = new File(BaseDir + RuleFileName);
                 //Rs2 = Rd.ReadICFfile(DataFile);
                 MyIfcParser parser = new MyIfcParser();
                 Common.msg("Starting to Read IFC File ");
                 String ProjectName = parser.getProjectName(CurrDir + "\\" + IFCFileName);
                 System.out.println("End of Reading File ");
-
+                
+                ComplianceResults   result = ccm.CheckCompliance(IFCFileName, null, null, null);
+                
+                
+                //Write Report : 
+                
+               // report.ReportBuilder report = new ReportBuilder();
+                ReportTemplate rm = new ReportTemplate();
+                rm.BuildingName ="Testing ";
+                GenerateHTML(rm);
+                com.rules.Common.msg("End of Report Generation ");
+                
+                
+                
             } catch (Exception e) {
 
                 System.out.println("IFC File Path Problem :" + e.getMessage());
