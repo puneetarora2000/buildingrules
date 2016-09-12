@@ -6,10 +6,18 @@
 package com.rules;
 
 import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import au.com.bytecode.opencsv.*;
+import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
+import au.com.bytecode.opencsv.bean.CsvToBean;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -31,6 +39,7 @@ public class MainStart extends javax.swing.JFrame {
     String BaseDir = "D:\\Dropbox\\RaninderBox\\";
 
     int returnVal = 0;
+    private String csvFilename;
 
     /**
      * Creates new form MainStart
@@ -244,13 +253,24 @@ public class MainStart extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   @SuppressWarnings({"rawtypes", "unchecked"})
+   private static ColumnPositionMappingStrategy setColumMapping()
+   {
+      ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+      strategy.setType(RuleTemplateObject.class);
+      String[] columns = new String[] {"RuleInputsVariableID","ruleset_id","RuleID","FORMULA","StructureElementID","DataType","Ifc_Structure_Attribute","IS456_Structure_Attribute_Name","InputsVariableDocumentation","OutputVariable","Operator","ruleConstant","created_at","updated_at","ApplyOnProjectNameID","ruleThresholds","freezedFormula","RuleName","RuleSetName","StructureAttributesName","StructureElementName"}; 
+      strategy.setColumnMapping(columns);
+      return strategy;
+   }
+    
+    
     private void mnuOpenRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuOpenRulesActionPerformed
         // TODO add your handling code here:
         String RuleFileName = "";
 
         ArrayList<String[]> Rs2 = null;
         File DataFile = null;
-        String csvfilename = "";
+         
         RuleReader Rd = new RuleReader();
         RuleModel rulemodel = new RuleModel();
         this.RuleTable.setModel(rulemodel);
@@ -272,22 +292,55 @@ public class MainStart extends javax.swing.JFrame {
         returnVal = chooser.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            RuleFileName = chooser.getSelectedFile().getName();
-            System.out.println("Kindly Open Rule File: "
-                    + RuleFileName);
+            csvFilename = chooser.getSelectedFile().getName();
+             System.out.println("Kindly Open Rule File: "
+               + csvFilename);
 
             try {
 
-                DataFile = new File(BaseDir + RuleFileName);
-                Rs2 = Rd.ReadCSVfile(DataFile);
-
-            } catch (Exception e) {
+//                DataFile = new File(BaseDir + RuleFileName);
+//                Rs2 = Rd.ReadCSVfile(DataFile);
+                   CsvToBean<RuleTemplateObject> bean  = new CsvToBean();
+                
+                CSVReader csvReader = new CSVReader(new FileReader(BaseDir+csvFilename));
+                //System.out.println("Size of Array S"+Rs2.size());
+              //  List<String[]> allRows  = csvReader.readAll();
+                  
+                ColumnPositionMappingStrategy<RuleTemplateObject> strategy = 
+        new ColumnPositionMappingStrategy<>();
+                
+                
+                strategy.setType(RuleTemplateObject.class);
+                 String[] columns = new String[] {"RuleInputsVariableID","ruleset_id","RuleID","FORMULA","StructureElementID","DataType","Ifc_Structure_Attribute","IS456_Structure_Attribute_Name","InputsVariableDocumentation","OutputVariable","Operator","ruleConstant","created_at","updated_at","ApplyOnProjectNameID","ruleThresholds","freezedFormula","RuleName","RuleSetName","StructureAttributesName","StructureElementName"}; 
+                 
+                strategy.setColumnMapping(columns);
+                
+                List<RuleTemplateObject> list = bean.parse(strategy, csvReader);
+                 int   counter = 0;
+                 System.out.println(list.size());
+               
+                 for (Object object : list) {
+                       
+                        RuleTemplateObject ruleTemplateObjects = (RuleTemplateObject) object;
+                        System.out.println(ruleTemplateObjects);
+                        
+                    counter += 1;    
+                }   
+//                String[] columnMapping = clc.getColumnMapping();
+//                
+//                for (String str:columnMapping){
+//                    System.out.println(str);
+//                }
+                
+                
+                
+            } catch (FileNotFoundException e) {
 
                 System.out.println("File Path Problem :" + e.getMessage());
 
             }
 
-            rulemodel.AddCSVData(Rs2);
+//            rulemodel.AddCSVData(Rs2);
 
         } else {
 
