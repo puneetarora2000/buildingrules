@@ -33,7 +33,7 @@ public class SingleLimitTest {
         limit.setDocumentation("It must be greater than ....60 >");
         
         
-        RoofLimits rf = new RoofLimits();
+        CheckComplianceMain rf = new CheckComplianceMain();
         
         complianceresults = rf.CheckCompliance(RuleName, inputs, limit,Operators);
         

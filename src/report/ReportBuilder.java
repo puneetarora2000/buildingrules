@@ -8,14 +8,10 @@ package report;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import static java.lang.System.out;
 import java.util.ArrayList;
-import static java.util.Arrays.stream;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.security.x509.X500Name;
 
 /**
  *
@@ -83,10 +79,10 @@ public class ReportBuilder {
         sb.append("<div class=\"tg-wrap\">");
        // sb.append("<div class=\"container\">" + "\n");
         //sb.append("<div class=\"jumbotron\">" + "\n");
-        sb.append("<center><h1>Conformance Report:</h1></center>" + "\n");
+        sb.append("<center><h3>Conformance Report:</h3></center>" + "\n");
         sb.append("<hr>" + "\n");
-        sb.append("<p><b> Report Title:</b> ").append(rm.getReportTitle().length() > 0 ? rm.getReportTitle() : "No Data Mentioned").append("</p>" + "\n");
-        sb.append("<p><b> Report Date:</b> ").append(rm.getReportDate().length() > 0 ? rm.getReportDate() : "No Data Mentioned").append("</p>" + "\n");
+        sb.append("<p><b> Report Title:</b> ").append(rm.getReportTitle().length() > 0 ? rm.getReportTitle() : "No Data Mentioned").append("</p>");
+        sb.append("<p><b> Report Date:</b> ").append(rm.getReportDate().length() > 0 ? rm.getReportDate() : "No Data Mentioned").append("|</p>");
         sb.append("<p><b> Report Module:</b> ").append(rm.getModule().length() > 0 ? rm.getModule() : "No Data Mentioned").append("</p>" + "\n");
         sb.append("<p><b> Report ProjectName:</b> ").append(rm.getProjectName().length() > 0 ? rm.getProjectName() : "No Data Mentioned").append("</p>" + "\n");
         sb.append("<p><b> Report BuildingName:</b>").append(rm.getBuildingName().length() > 0 ? rm.getBuildingName() : "No Data Mentioned").append("</p>" + "\n");
@@ -176,14 +172,17 @@ public class ReportBuilder {
         rm.setModule("Structure Analysis ");
         rm.setBuildingName("Yadvindra Public School");
         rm.setSiteName("Dinning Hall");
-        rm.setReportPreparedBy("Randinder D");
-
+        rm.setReportPreparedBy("Randinder Dhillon");
+        String RemarksStr = "XXXX";
         List<ReportColumnAndValuePair> col = new ArrayList<>();
         col.add(new ReportColumnAndValuePair("S.No:", "1"));
         col.add(new ReportColumnAndValuePair("ReferenceNo:", "#228"));
-        col.add(new ReportColumnAndValuePair("RuleSetID:", "3737"));
-        col.add(new ReportColumnAndValuePair("Flag:", "Yes"));
-        col.add(new ReportColumnAndValuePair("Remark:", "XXXXX"));
+        col.add(new ReportColumnAndValuePair("RuleSetName:", "Columns-Stability-Analysis"));
+        col.add(new ReportColumnAndValuePair("RuleName:", "Colmuns-SlendernessLimits-Rule2"));
+        col.add(new ReportColumnAndValuePair("StuctureElement:", "IfcColumn"));
+          col.add(new ReportColumnAndValuePair("StructureAttributesName:", "OuterSurfaceArea"));
+        col.add(new ReportColumnAndValuePair("Conformance Flag:", "Yes"));
+        col.add(new ReportColumnAndValuePair("Remark:", RemarksStr));
 
         rm.setColumnslist(col);
 

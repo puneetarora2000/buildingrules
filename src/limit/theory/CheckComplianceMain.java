@@ -10,7 +10,7 @@ package limit.theory;
  *
  * @author Ecologic
  */
-public class RoofLimits 
+public class CheckComplianceMain 
     implements LimitsInterface
 {
 

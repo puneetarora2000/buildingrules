@@ -11,17 +11,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import ifc4javatoolbox.ifc4.IfcLabel;
-import ifc4javatoolbox.ifc4.IfcProject;
-import ifc4javatoolbox.ifcmodel.IfcModel;
-import ifc4javatoolbox.step.parser.util.ProgressEvent;
-import ifc4javatoolbox.step.parser.util.StepParserProgressListener;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import limit.theory.CheckComplianceMain;
 import limit.theory.ComplianceResults;
 import limit.theory.ViewMainIFC;
-import report.ReportBuilder;
 import static report.ReportBuilder.GenerateHTML;
 import report.ReportTemplate;
 
@@ -30,6 +24,7 @@ import report.ReportTemplate;
  * @author Ecologic
  */
 public class MainStart extends javax.swing.JFrame {
+    private static final long serialVersionUID = 1L;
 
     JFileChooser chooser = null;
     JFileChooser uploader = null;
@@ -62,10 +57,12 @@ public class MainStart extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnInvokeCheker = new javax.swing.JButton();
         btnIFCViewer = new javax.swing.JButton();
+        btnRuleReader = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuOpenRules = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mnuopenIFC = new javax.swing.JMenuItem();
         Exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuGenerateICF = new javax.swing.JMenuItem();
@@ -108,7 +105,7 @@ public class MainStart extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(RuleTable);
 
-        btnIFCupload.setText("Upload IFC");
+        btnIFCupload.setText("Generate Report");
         btnIFCupload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIFCuploadActionPerformed(evt);
@@ -119,7 +116,8 @@ public class MainStart extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Thesis Topic");
 
-        btnInvokeCheker.setText("Invoke Checker");
+        btnInvokeCheker.setText("-");
+        btnInvokeCheker.setToolTipText("-");
         btnInvokeCheker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInvokeChekerActionPerformed(evt);
@@ -133,6 +131,13 @@ public class MainStart extends javax.swing.JFrame {
             }
         });
 
+        btnRuleReader.setText("Rule Reader");
+        btnRuleReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRuleReaderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,27 +145,34 @@ public class MainStart extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnInvokeCheker, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIFCupload, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRuleReader, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnInvokeCheker, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIFCupload, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIFCViewer, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnIFCViewer, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnInvokeCheker)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnIFCViewer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRuleReader)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnInvokeCheker)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnIFCupload))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -180,6 +192,16 @@ public class MainStart extends javax.swing.JFrame {
         });
         jMenu1.add(mnuOpenRules);
         jMenu1.add(jSeparator1);
+
+        mnuopenIFC.setMnemonic('C');
+        mnuopenIFC.setText("OpenIFC");
+        mnuopenIFC.setToolTipText("Open IFC ");
+        mnuopenIFC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuopenIFCActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuopenIFC);
 
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
@@ -342,6 +364,9 @@ public class MainStart extends javax.swing.JFrame {
                 String ProjectName = parser.getProjectName(CurrDir + "\\" + IFCFileName);
                 System.out.println("End of Reading File ");
                 
+                
+                
+                
                 ComplianceResults   result = ccm.CheckCompliance(IFCFileName, null, null, null);
                 
                 
@@ -366,12 +391,12 @@ public class MainStart extends javax.swing.JFrame {
 
     private void btnInvokeChekerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvokeChekerActionPerformed
         // TODO add your handling code here:
-        double conformance = 01;
-        double non_conformance = 20;
-
-        System.out.println("Execute Checker !!!\n & Generate Report");
-
-        report.ReportPieChart.GenrateChart(conformance, non_conformance);
+//        double conformance = 01;
+//        double non_conformance = 20;
+//        
+//        System.out.println("Execute Checker !!!\n & Generate Report");
+//
+//        report.ReportPieChart.GenrateChart(conformance, non_conformance);
 
 
     }//GEN-LAST:event_btnInvokeChekerActionPerformed
@@ -411,6 +436,83 @@ public class MainStart extends javax.swing.JFrame {
         System.out.println("Generate IFC Files");
 
     }//GEN-LAST:event_mnuGenerateICFActionPerformed
+
+    private void btnRuleReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuleReaderActionPerformed
+        // TODO add your handling code here:
+       // Read the CSV File 
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnRuleReaderActionPerformed
+
+    private void mnuopenIFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuopenIFCActionPerformed
+        // TODO add your handling code here:
+        
+          CheckComplianceMain ccm = new CheckComplianceMain();
+       // Get the Rule Structure and and get it checked , return values as per HTML 
+        // Report Structure . Get call from the CSV Rule File  .
+        String IFCFileName = "";
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "IFC Files", "ifc", "txt");
+        uploader.setDialogTitle("Open IFC  File");
+        uploader.setFileFilter(filter);
+        uploader.setAcceptAllFileFilterUsed(true);
+        uploader.setApproveButtonToolTipText("Kindly IFC  File");
+        uploader.setApproveButtonText("Kindly IFC File");
+
+        //File workingDirectory = new File(System.getProperty("user.dir"));
+        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\");
+        uploader.setCurrentDirectory(workingDirectory);
+
+        uploader.setMultiSelectionEnabled(false);
+        returnVal = uploader.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+            IFCFileName = uploader.getSelectedFile().getName();
+            String CurrDir = uploader.getCurrentDirectory().getAbsolutePath();
+            System.out.println("Kindly Open IFC File: " + CurrDir + "\\" + IFCFileName);
+
+            try {
+                
+               // DataFile = new File(BaseDir + RuleFileName);
+                //Rs2 = Rd.ReadICFfile(DataFile);
+                MyIfcParser parser = new MyIfcParser();
+                Common.msg("Starting to Read IFC File ");
+                String ProjectName = parser.getProjectName(CurrDir + "\\" + IFCFileName);
+                System.out.println("End of Reading File ");
+                
+                
+                
+                
+                ComplianceResults   result = ccm.CheckCompliance(IFCFileName, null, null, null);
+                
+                
+                //Write Report : 
+                
+               // report.ReportBuilder report = new ReportBuilder();
+                ReportTemplate rm = new ReportTemplate();
+                rm.BuildingName ="Testing ";
+                GenerateHTML(rm);
+                com.rules.Common.msg("End of Report Generation ");
+                
+                
+                
+            } catch (Exception e) {
+
+                System.out.println("IFC File Path Problem :" + e.getMessage());
+
+            }
+
+        }
+        
+        
+        
+    }//GEN-LAST:event_mnuopenIFCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,6 +555,7 @@ public class MainStart extends javax.swing.JFrame {
     private javax.swing.JButton btnIFCViewer;
     private javax.swing.JButton btnIFCupload;
     private javax.swing.JButton btnInvokeCheker;
+    private javax.swing.JButton btnRuleReader;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -462,5 +565,6 @@ public class MainStart extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem mnuGenerateICF;
     private javax.swing.JMenuItem mnuOpenRules;
+    private javax.swing.JMenuItem mnuopenIFC;
     // End of variables declaration//GEN-END:variables
 }
