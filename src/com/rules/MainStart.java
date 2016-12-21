@@ -36,7 +36,7 @@ public class MainStart extends javax.swing.JFrame {
 
     JFileChooser chooser = null;
     JFileChooser uploader = null;
-    String BaseDir = "D:\\Dropbox\\RaninderBox\\";
+    String BaseDir = "D:\\Dropbox\\RaninderBox\\rules\\";
 
     int returnVal = 0;
     private String csvFilename;
@@ -285,7 +285,7 @@ public class MainStart extends javax.swing.JFrame {
         chooser.setApproveButtonText("Kindly Open Rule File");
 
         //File workingDirectory = new File(System.getProperty("user.dir"));
-        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\models");
+        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\rules\\");
         chooser.setCurrentDirectory(workingDirectory);
 
         chooser.setMultiSelectionEnabled(false);
@@ -308,21 +308,39 @@ public class MainStart extends javax.swing.JFrame {
                   
                 ColumnPositionMappingStrategy<RuleTemplateObject> strategy = 
         new ColumnPositionMappingStrategy<>();
-                
+                 
                 
                 strategy.setType(RuleTemplateObject.class);
-                 String[] columns = new String[] {"RuleInputsVariableID","ruleset_id","RuleID","FORMULA","StructureElementID","DataType","Ifc_Structure_Attribute","IS456_Structure_Attribute_Name","InputsVariableDocumentation","OutputVariable","Operator","ruleConstant","created_at","updated_at","ApplyOnProjectNameID","ruleThresholds","freezedFormula","RuleName","RuleSetName","StructureAttributesName","StructureElementName"}; 
+                 
+                String[] columns = new String[] {"RuleInputsVariableID","ruleset_id","RuleID","FORMULA","StructureElementID","DataType","Ifc_Structure_Attribute","IS456_Structure_Attribute_Name","InputsVariableDocumentation","OutputVariable","Operator","ruleConstant","created_at","updated_at","ApplyOnProjectNameID","ruleThresholds","freezedFormula","RuleName","RuleSetName","StructureAttributesName","StructureElementName"}; 
                  
                 strategy.setColumnMapping(columns);
                 
                 List<RuleTemplateObject> list = bean.parse(strategy, csvReader);
                  int   counter = 0;
-                 System.out.println(list.size());
+                // System.out.println(list.size());
                
                  for (Object object : list) {
                        
                         RuleTemplateObject ruleTemplateObjects = (RuleTemplateObject) object;
-                        System.out.println(ruleTemplateObjects);
+                        
+                        System.out.println("==========================================================");
+                        System.out.println("RuleInputVar:"+ruleTemplateObjects.getRuleInputsVariableID());
+                        System.out.println("RuleInputVar:"+ruleTemplateObjects.getRuleSetName());
+                        System.out.println("RuleName:"+ruleTemplateObjects.getRuleName() );
+                        System.out.println("RuleInput Variable Documention:"+ruleTemplateObjects.getFORMULA());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getStructureElementID());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getIfc_Structure_Attribute());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getIS456_Structure_Attribute_Name());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getInputsVariableDocumentation());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getOutputVariable());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getOperator());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getRuleConstant());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getRuleThresholds());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getFreezedFormula());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getStructureAttributesName());
+                        System.out.println("Rule Output:"+ruleTemplateObjects.getStructureElementName());
+                        System.out.println("==========================================================");  
                         
                     counter += 1;    
                 }   
@@ -518,7 +536,7 @@ public class MainStart extends javax.swing.JFrame {
         uploader.setApproveButtonText("Kindly IFC File");
 
         //File workingDirectory = new File(System.getProperty("user.dir"));
-        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\");
+        File workingDirectory = new File("D:\\Dropbox\\RaninderBox\\rules\\");
         uploader.setCurrentDirectory(workingDirectory);
 
         uploader.setMultiSelectionEnabled(false);

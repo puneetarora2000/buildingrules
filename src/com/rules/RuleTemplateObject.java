@@ -347,7 +347,7 @@ public class RuleTemplateObject implements Serializable {
     
     @Override
      public String toString() {
-        return "Student[name = " + StructureElementName + ", age = " + StructureElementName + ", hobby = " + StructureElementName + "]";
+        return "RuleObject[StructureElementName = " + StructureElementName + ", StructureAttributesName = " + StructureAttributesName + ", RuleSetName = " + RuleSetName + "]";
     }
     
     

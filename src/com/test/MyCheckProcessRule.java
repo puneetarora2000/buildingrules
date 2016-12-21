@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  *
  * @author Ecologic
  */
-public class MyCheck {
+public class MyCheckProcessRule {
     
     
     
